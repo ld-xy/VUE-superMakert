@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/VUE-superMakert.iml" filepath="$PROJECT_DIR$/.idea/VUE-superMakert.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../vuejs资料和代码/其它资料/Day 11/课堂代码/supermall/.idea/supermall.iml" filepath="$PROJECT_DIR$/../vuejs资料和代码/其它资料/Day 11/课堂代码/supermall/.idea/supermall.iml" />
     </modules>
   </component>
 </project>
