@@ -20,5 +20,13 @@ npm run build
 npm run lint
 ```
 
+### gitHub操作
+```
+git add .
+git  commit -m '描述'
+git push
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
