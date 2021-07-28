@@ -162,6 +162,7 @@
   }
 
   .home-nav {
+    /*插入自定义属性值*/
     background-color: var(--color-tint);
     color: #fff;
 

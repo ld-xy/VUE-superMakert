@@ -35,7 +35,7 @@
   }
 
   .recommend-item {
-    flex: 1;
+    flex: 1;   /* flex让其均等分 */
   }
 
   .recommend-item img {
