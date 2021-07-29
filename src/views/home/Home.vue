@@ -1,10 +1,12 @@
 <template>
   <div id="home" class="wrapper">
     <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
+    <!-- 语法糖，相当于 v-on:tabClick -->
     <tab-control :titles="['流行', '新款', '精选']"
                  @tabClick="tabClick"
                  ref="tabControl1"
                  class="tab-control" v-show="isTabFixed"/>
+
     <scroll class="content"
             ref="scroll"
             :probe-type="3"
@@ -83,7 +85,7 @@
     },
 
     deactivated() {
-      this.saveY = this.$refs.scroll.getScrollY()
+      this.saveY = this.$refs.scroll.getScrollY()    /* 需要在组件内指定ref */
     },
 
     created() {

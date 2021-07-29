@@ -35,4 +35,6 @@ cli2/cli3  vue2.x 开发，如果您使用的是cli4.x或者vue3.x则需要更�
 
 子向父传值  this.$emit（”事件名“,值）    父向子传值 props { 父中的变量名{ default(){return [] }}}
 
+子绝父相  子元素绝对定位 position:absolution  父元素相对定位  position:relative
+
 ```
