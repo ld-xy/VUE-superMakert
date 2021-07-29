@@ -19,7 +19,7 @@
                    ref="tabControl2"/>
       <good-list :goods="showGoods"/>
     </scroll>
-    <back-top @click.native="backClick" v-show="isShowBackTop"/>
+    <back-top @click.native="backClick" v-show="isShowBackTop"/>     <!-- 滑动的时候固定标签 -->
   </div>
 </template>
 
@@ -49,6 +49,7 @@
       Scroll,
       BackTop
     },
+
     data() {
       return {
         banners: [],
@@ -65,21 +66,26 @@
         saveY: 0
       }
     },
+
     computed: {
       showGoods() {
         return this.goods[this.currentType].list
       }
     },
+
     destroyed() {
       console.log('home destroyed');
     },
+
     activated() {
       this.$refs.scroll.scrollTo(0, this.saveY, 0)
       this.$refs.scroll.refresh()
     },
+
     deactivated() {
       this.saveY = this.$refs.scroll.getScrollY()
     },
+
     created() {
       // 1.请求多个数据
       this.getHomeMultidata()
@@ -89,6 +95,7 @@
       this.getHomeGoods('new')
       this.getHomeGoods('sell')
     },
+
     mounted() {
       // 1.图片加载完成的事件监听
       const refresh = debounce(this.$refs.scroll.refresh, 50)
@@ -96,6 +103,7 @@
         refresh()
       })
     },
+
     methods: {
       /**
        * 事件监听相关的方法
@@ -115,9 +123,12 @@
         this.$refs.tabControl1.currentIndex = index;
         this.$refs.tabControl2.currentIndex = index;
       },
+
+      //获取组件，并且使组件发生滚动到顶部
       backClick() {
         this.$refs.scroll.scrollTo(0, 0)
       },
+
       contentScroll(position) {
         // 1.判断BackTop是否显示
         this.isShowBackTop = (-position.y) > 1000
@@ -125,12 +136,16 @@
         // 2.决定tabControl是否吸顶(position: fixed)
         this.isTabFixed = (-position.y) > this.tabOffsetTop
       },
+
       loadMore() {
         this.getHomeGoods(this.currentType)
       },
+
       swiperImageLoad() {
+        // 根据$refs获取对应组件，根据el来获取指定元素的属性
         this.tabOffsetTop = this.$refs.tabControl2.$el.offsetTop;
       },
+
       /**
        * 网络请求相关的方法
        */
@@ -140,6 +155,7 @@
           this.recommends = res.data.recommend.list;
         })
       },
+
       getHomeGoods(type) {
         const page = this.goods[type].page + 1
         getHomeGoods(type, page).then(res => {
@@ -152,6 +168,7 @@
       }
     }
   }
+
 </script>
 
 <style scoped>
@@ -184,6 +201,7 @@
     right: 0;
   }
 
+  /*顶部导航栏控制，让其位置固定，然后让其在上层最外层进行显示*/
   .tab-control {
     position: relative;
     z-index: 9;
@@ -192,6 +210,6 @@
   /*.content {*/
     /*height: calc(100% - 93px);*/
     /*overflow: hidden;*/
-    /*margin-top: 44px;*/
+    /*!*margin-top: 44px;*!        将中间部分的内容设置上边距，从而使上部的导航栏不盖住下方内容*/
   /*}*/
 </style>

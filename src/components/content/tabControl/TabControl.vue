@@ -1,5 +1,6 @@
 <template>
   <div class="tab-control">
+    <!--  active是动态绑定的class属性 当index与当前index相同时起效   -->
     <div v-for="(item, index) in titles"
          class="tab-control-item"
          :class="{active: index === currentIndex}"
@@ -28,7 +29,7 @@
     methods: {
       itemClick(index) {
         this.currentIndex = index;
-        this.$emit('tabClick', index)
+        this.$emit('tabClick', index)    //子组件向父组件传值
       }
     }
   }
@@ -39,13 +40,14 @@
     display: flex;
     text-align: center;
     font-size: 15px;
+    /*  */
     height: 40px;
     line-height: 40px;
     background-color: #fff;
   }
 
   .tab-control-item {
-    flex: 1;
+    flex: 1;        /*均分*/
   }
 
   .tab-control-item span {
@@ -59,4 +61,5 @@
   .active span {
     border-bottom: 3px solid var(--color-tint);
   }
+
 </style>
