@@ -99,7 +99,7 @@
     },
 
     mounted() {
-      // 1.图片加载完成的事件监听
+      // 1.图片加载完成的事件监听  防抖操作 每次图片加载完成都进行刷新，太频繁
       const refresh = debounce(this.$refs.scroll.refresh, 50)
       this.$bus.$on('itemImageLoad', () => {
         refresh()
@@ -164,7 +164,7 @@
           this.goods[type].list.push(...res.data.list)
           this.goods[type].page += 1
 
-          // 完成上拉加载更多
+          // 完成上拉加载更多 后要记得结束此次上拉
           this.$refs.scroll.finishPullUp()
         })
       }
@@ -185,6 +185,7 @@
     background-color: var(--color-tint);
     color: #fff;
 
+    /*不需要让其设置fixed固定位置，因为导航本来就是最上面，滚动的区域本来也就是下面那一块*/
     /*在使用浏览器原生滚动时, 为了让导航不跟随一起滚动*/
     /*position: fixed;*/
     /*left: 0;*/
@@ -205,6 +206,7 @@
 
   /*顶部导航栏控制，让其位置固定，然后让其在上层最外层进行显示*/
   .tab-control {
+    /*这个地方想让其外层显示，可以使用fixed属性，也可以使用绝对定位，但是没必要，因为子绝父相*/
     position: relative;
     z-index: 9;
   }
