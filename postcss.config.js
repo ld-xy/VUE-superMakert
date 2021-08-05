@@ -8,7 +8,9 @@ module.exports = {
       viewportUnit: 'vw', // 指定需要转换成的视窗单位，建议使用vw
       selectorBlackList: ['ignore'], //指定不需要转化的类，写上类名即可，ignore的用法是在组件中视图的标签下的类名后添加一个ignore
       minPixelValue: 1, // 小于或等于`1px`不转化未视窗单位
-      mediaQuery: false // 允许在媒体查询中转换`px`
+      mediaQuery: false, // 允许在媒体查询中转换`px`
+      exclude:[/TabBar/]  //不匹配指定正则表达式匹配的类名
     }
   }
 }
+//正则  /^ &/  /TabBar/
