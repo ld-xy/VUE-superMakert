@@ -1,65 +1,59 @@
 <template>
-  <div class="tab-control">
-    <!--  active是动态绑定的class属性 当index与当前index相同时起效   -->
-    <div v-for="(item, index) in titles"
-         class="tab-control-item"
-         :class="{active: index === currentIndex}"
-         @click="itemClick(index)">
-      <span>{{item}}</span>
+    <div class="tab-control">
+        <div v-for="(item, index) in titles" :key="index" 
+        class="tab-control-item"
+        :class="{active:index===currentIndex}" @click="itemClick(index)">
+            <span>{{item}}</span>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
-  export default {
-    name: "TabControl",
-    props: {
-      titles: {
-        type: Array,
-        default() {
-          return []
-        }
-      }
-    },
-    data() {
-      return {
-        currentIndex: 0
-      }
-    },
-    methods: {
-      itemClick(index) {
-        this.currentIndex = index;
-        this.$emit('tabClick', index)    //子组件向父组件传值
+export default {
+  name: 'TabControl',
+  props: {
+    titles: {
+      type: Array,
+      default () {
+        return []
       }
     }
+  },
+  data () {
+    return {
+      currentIndex: 0
+    }
+  },
+  methods: {
+    itemClick (index) {
+      this.currentIndex = index
+      this.$emit('tabClick',index) /* 将子组件数据传递到父组件 */
+    }
   }
+}
 </script>
 
-<style scoped>
-  .tab-control {
+<style>
+.tab-control {
     display: flex;
+    width: 100%;
     text-align: center;
+    vertical-align: middle;
     font-size: 15px;
-    /*  */
-    height: 40px;
+    background: #fff;
+}
+.tab-control-item {
+    flex: 1;
     line-height: 40px;
-    background-color: #fff;
-  }
-
-  .tab-control-item {
-    flex: 1;        /*均分*/
-  }
-
-  .tab-control-item span {
+}
+.tab-control-item span {
     padding: 5px;
-  }
-
-  .active {
+}
+.active {
     color: var(--color-high-text);
-  }
-
-  .active span {
+}
+.active span {
     border-bottom: 3px solid var(--color-tint);
-  }
-
+    font-weight: 600;
+}
 </style>

@@ -7,7 +7,7 @@
       </tr>
     </table>
     <table class="info-param">
-      <tr v-for="(info, index) in paramInfo.infos">
+      <tr v-for="(info, index) in paramInfo.infos" :key="index">
         <td class="info-param-key">{{info.key}}</td>
         <td class="param-value">{{info.value}}</td>
       </tr>
@@ -20,12 +20,12 @@
 
 <script>
 	export default {
-		name: "DetailParamInfo",
+	name: "DetailParamInfo",
     props: {
-		  paramInfo: {
-		    type: Object,
+      paramInfo: {
+        type: Object,
         default() {
-		      return {}
+          return {}
         }
       }
     }

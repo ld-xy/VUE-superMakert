@@ -1,16 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-const Home = () => import('../views/home/Home')
-const Category = () => import('../views/category/Category')
-const Cart = () => import('../views/cart/Cart')
-const Profile = () => import('../views/profile/Profile')
-const Detail = () => import('../views/detail/Detail')
+// import { createRouter, createWebHistory } from 'vue-router'
 
-// 1.安装插件
+const Home = () => import('views//Home/Home')
+const Category = () => import('views/Category/Category')
+const Cart = () => import('views/Cart/Cart')
+const Profile = () => import('views/Profile/Profile')
+const Detail = () => import('views/detail/Detail')
 Vue.use(VueRouter)
-
-// 2.创建router
 const routes = [
   {
     path: '',
@@ -41,6 +39,8 @@ const router = new VueRouter({
   routes,
   mode: 'history'
 })
-
-
+// const router = createRouter({
+//   history: createWebHistory(),
+//   routes
+// })
 export default router
